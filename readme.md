@@ -8,10 +8,11 @@ Aplicativo de atividades físicas.
 
 ## Regras de Negócio
 
-1. O usuário tem que escolher na hora de cadastrar o seu perfil, sendo Aluno ou Treinador.
-2. Na hora de cadastrar o usuário tem que inserir seu nome completo, e-mail e a senha.
+
+1. Na hora de cadastrar o usuário tem que inserir seu nome completo, e-mail e a senha.
   - A senha tem que ter no mínimo 8 caracteres incluindo caracteres especiais.
   - O e-mail tem que ser único.
+2. O usuário depois que se cadastrar tem que escolher o seu perfil, sendo Aluno ou Treinador.
 3. Caso ele for aluno, o usuário precisa inserir alguns dados como: idade, altura, peso e problemas de saúde (caso houver).
   - Essas informações são obrigatórias.
   - Caso não tenha problemas de saúde, marcar como nulo.
