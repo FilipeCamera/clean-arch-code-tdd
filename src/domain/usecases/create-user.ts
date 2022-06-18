@@ -1,16 +1,30 @@
-import { Coach, CoachProps } from "../entities/coach";
-import { Student, StudentProps } from "../entities/student";
+import { Coach, CoachProps, Student, StudentProps, User } from "../models";
 
-interface IData {
-  dataStudent?: StudentProps;
-  dataCoach?: CoachProps;
+export interface ICreateUser {
+  write: (data: ICreateUser.Params) => Promise<ICreateUser.Result>;
 }
-export class CreateUserUseCase {
-  write({ dataStudent, dataCoach }: IData) {
-    const user: Student | Coach = !!dataStudent
-      ? new Student(dataStudent)
-      : new Coach(dataCoach);
 
-    return user;
+export class CreateUserUseCase implements ICreateUser {
+  async write({
+    student,
+    coach,
+  }: ICreateUser.Params): Promise<ICreateUser.Result> {
+    if (student) {
+      const user = new Student(student);
+      return user;
+    }
+    if (coach) {
+      const user = new Student(student);
+      return user;
+    }
+    throw new Error("nenhum campo foi preenchido, erro ao criar usuário");
   }
+}
+
+export namespace ICreateUser {
+  export type Params = {
+    student?: StudentProps;
+    coach?: CoachProps;
+  };
+  export type Result = Coach | Student;
 }

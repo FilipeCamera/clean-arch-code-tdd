@@ -1,35 +1,37 @@
-import { Coach, CoachProps } from "../entities/coach";
-import { Student, StudentProps } from "../entities/student";
-import { User, UserProps } from "../entities/user";
+import { Student, User } from "../models";
 import { CreateUserUseCase } from "./create-user";
 
-describe("teste de criação de usuário e perfil", () => {
-  test("criando usuário aluno", () => {
-    const dataStudent: StudentProps = {
-      fullname: "Alana Miranda",
-      email: "alana@email.com",
-      password: "123",
+describe("teste de criação de usuário", () => {
+  test("criando usuário com perfil estudante", async () => {
+    const student = {
+      fullname: "teste",
+      email: "teste@email.com",
+      password: "teste",
       age: 22,
-      weight: 54,
-      height: 169,
+      weight: 55,
+      height: 168,
     };
-    const create = new CreateUserUseCase();
-    const user = create.write({ dataStudent });
+    const sut = new CreateUserUseCase();
+
+    const user = await sut.write({ student });
+
     expect(user).toBeDefined();
     expect(user).toBeInstanceOf(Student);
   });
-  test("criando usuário treinador", () => {
-    const dataCoach: CoachProps = {
-      fullname: "Alana Miranda",
-      email: "alana@email.com",
-      password: "123",
-      experience: "teste",
+  test("criando usuário com perfil treinador", async () => {
+    const coach = {
+      fullname: "teste",
+      email: "teste@email.com",
+      password: "teste",
       formation: "teste",
       specs: "teste",
+      experience: "teste",
     };
-    const create = new CreateUserUseCase();
-    const user = create.write({ dataCoach });
+    const sut = new CreateUserUseCase();
+
+    const user = await sut.write({ coach });
+
     expect(user).toBeDefined();
-    expect(user).toBeInstanceOf(Coach);
+    expect(user).toBeInstanceOf(Student);
   });
 });
