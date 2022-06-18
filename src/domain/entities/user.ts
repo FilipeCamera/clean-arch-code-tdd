@@ -5,11 +5,9 @@ export type UserProps = {
 };
 
 export class User {
-  private readonly id: string;
+  private readonly id: string = Math.random().toString();
 
-  constructor(private readonly data: UserProps) {
-    this.id = Math.random().toString();
-  }
+  constructor(private readonly data: UserProps) {}
 
   getFullName() {
     return this.data.fullname;

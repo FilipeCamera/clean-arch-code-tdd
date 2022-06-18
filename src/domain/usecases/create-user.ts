@@ -1,10 +1,15 @@
-import { User, UserProps } from "../entity/user";
+import { Coach, CoachProps } from "../entities/coach";
+import { Student, StudentProps } from "../entities/student";
 
+interface IData {
+  dataStudent?: StudentProps;
+  dataCoach?: CoachProps;
+}
 export class CreateUserUseCase {
-  write(data: UserProps) {
-    if (!data) throw new Error("data is not found");
-
-    const user = new User(data);
+  write({ dataStudent, dataCoach }: IData) {
+    const user: Student | Coach = !!dataStudent
+      ? new Student(dataStudent)
+      : new Coach(dataCoach);
 
     return user;
   }
