@@ -25,7 +25,6 @@ export class CreateUserUseCase implements ICreateUser {
       const user = new Coach(coach);
       return user;
     }
-
-    throw new Error("campos vazios");
+    throw new Error("Campo vazio, nao foi possivel criar o usuario.");
   }
 }

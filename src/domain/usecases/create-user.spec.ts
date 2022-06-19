@@ -68,6 +68,8 @@ describe("teste de criação de usuário", () => {
   test("verificando se retornar um erro caso o campo esteja vazio", async () => {
     const sut = new CreateUserUseCase();
 
-    await expect(sut.write({})).rejects.toThrow("campos vazios");
+    await expect(sut.write({})).rejects.toThrow(
+      "Campo vazio, nao foi possivel criar o usuario."
+    );
   });
 });
