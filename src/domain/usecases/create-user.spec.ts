@@ -1,9 +1,9 @@
-import { Student, User } from "../models";
-import { CreateUserUseCase } from "./create-user";
+import { Coach, CoachProps, Student, StudentProps, User } from "../models";
+import { CreateUserUseCase, ICreateUser } from "./create-user";
 
 describe("teste de criação de usuário", () => {
   test("criando usuário com perfil estudante", async () => {
-    const student = {
+    const student: StudentProps = {
       fullname: "teste",
       email: "teste@email.com",
       password: "teste",
@@ -19,7 +19,7 @@ describe("teste de criação de usuário", () => {
     expect(user).toBeInstanceOf(Student);
   });
   test("criando usuário com perfil treinador", async () => {
-    const coach = {
+    const coach: CoachProps = {
       fullname: "teste",
       email: "teste@email.com",
       password: "teste",
@@ -32,7 +32,7 @@ describe("teste de criação de usuário", () => {
     const user = await sut.write({ coach });
 
     expect(user).toBeDefined();
-    expect(user).toBeInstanceOf(Student);
+    expect(user).toBeInstanceOf(Coach);
   });
   test("verificando se o usuario aluno tem um id", async () => {
     const student = {
@@ -46,7 +46,8 @@ describe("teste de criação de usuário", () => {
 
     const sut = new CreateUserUseCase();
 
-    const user = await sut.write({ student });
+    const user: any = await sut.write({ student });
+
     expect(user.getId()).toBeDefined();
   });
   test("verificando se o usuario treinador tem um id", async () => {
@@ -60,8 +61,13 @@ describe("teste de criação de usuário", () => {
     };
 
     const sut = new CreateUserUseCase();
-    const user = await sut.write({ coach });
-    console.log(user.getId());
+    const user: any = await sut.write({ coach });
+
     expect(user.getId()).toBeDefined();
+  });
+  test("verificando se retornar um erro caso o campo esteja vazio", async () => {
+    const sut = new CreateUserUseCase();
+
+    await expect(sut.write({})).rejects.toThrow("campos vazios");
   });
 });
