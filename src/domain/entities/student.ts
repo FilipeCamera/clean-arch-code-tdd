@@ -4,4 +4,5 @@ export type Student = User & {
   age: number;
   weight: number;
   height: number;
+  sex: string;
 };
