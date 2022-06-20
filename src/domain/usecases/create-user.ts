@@ -1,30 +1,13 @@
-import { Coach, CoachProps, Student, StudentProps, User } from "../models";
+import { Coach, Student } from "../entities";
 
-export interface ICreateUser {
-  write: (data: ICreateUser.Params) => Promise<ICreateUser.Result | Error>;
+export interface CreateUser {
+  write: (data: CreateUser.Params) => Promise<CreateUser.Result | Error>;
 }
 
-export namespace ICreateUser {
+export namespace CreateUser {
   export type Params = {
-    student?: StudentProps;
-    coach?: CoachProps;
+    student?: Student;
+    coach?: Coach;
   };
   export type Result = Coach | Student;
-}
-
-export class CreateUserUseCase implements ICreateUser {
-  async write({
-    student,
-    coach,
-  }: ICreateUser.Params): Promise<ICreateUser.Result | Error> {
-    if (student) {
-      const user = new Student(student);
-      return user;
-    }
-    if (coach) {
-      const user = new Coach(coach);
-      return user;
-    }
-    throw new Error("Campo vazio, nao foi possivel criar o usuario.");
-  }
 }
