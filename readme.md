@@ -7,15 +7,11 @@ o objetivo desse projeto é estudar os conceitos de clean code, arquitetura limp
 Aplicativo de atividades físicas.
 
 ## Regras de Negócio
-
-
-1. Na hora de cadastrar o usuário tem que inserir seu nome completo, e-mail e a senha.
+1. Cadastrar usuario passar as informacoes basicas como email, senha e nome e alem disso as informacoes complementares de acordo com perfil escolhido: Aluno ou Treinador.
   - A senha tem que ter no mínimo 8 caracteres incluindo caracteres especiais.
   - O e-mail tem que ser único.
-2. O usuário depois que se cadastrar tem que escolher o seu perfil, sendo Aluno ou Treinador.
-3. Caso ele for aluno, o usuário precisa inserir alguns dados como: idade, altura, peso e problemas de saúde (caso houver).
-  - Essas informações são obrigatórias.
-  - Caso não tenha problemas de saúde, marcar como nulo.
-4. Caso ele for treinador, o usuário precisa inserir alguns dados como: formação, especialidade e experiência.
-  - Essas informações são obrigatórias.
+  - Perfil aluno: idade, altura, peso e problemas de saúde (caso houver). (obrigatorias)
+    1. Caso nao tenha problema de saude, marcar como nulo.
+  - Perfil treinador:  formação, especialidade e experiência. (obrigatorias)
+
 
