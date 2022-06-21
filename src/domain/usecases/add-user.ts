@@ -1,14 +1,10 @@
 import { Coach, Student } from "../entities";
 
 export interface AddUser {
-  write: (data: AddUser.Params) => Promise<AddUser.Result | Error>;
-  load: () => Promise<Array<Student | Coach>>;
+  add: (data: AddUser.Params) => Promise<AddUser.Result>;
 }
 
 export namespace AddUser {
-  export type Params = {
-    student?: Student;
-    coach?: Coach;
-  };
-  export type Result = Boolean;
+  export type Params = Student | Coach;
+  export type Result = Student | Coach;
 }
